@@ -1,5 +1,6 @@
 const searchForm = document.getElementById('search-form')
 const searchBox = document.getElementById('search')
+const searchResults = document.getElementById('search-results')
 
 let fetchStreamApi = (search) => {
   return fetch(`https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=`+search, {
@@ -18,8 +19,7 @@ let fetchStreamApi = (search) => {
 
 let testFunction = (jsonData) => {
   console.log(jsonData)
-
-}
+  }
 
 let amendSearch = (event) => {
   event.preventDefault()
