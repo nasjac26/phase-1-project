@@ -3,8 +3,8 @@ let init = () =>
 {
 const searchForm = document.getElementById('search-form')
 const searchBox = document.getElementById('search')
-const searchResults = document.getElementById('search-results')
-
+const movieCard = document.getElementById('movie-card')
+const movieContainer = document.getElementById('movie-container')
 
 let fetchStreamApi = (search) => {
   return fetch(`https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=`+search, {
@@ -25,13 +25,14 @@ let renderSearchResults = (jsonData) => {
   clearSearchResults()
   console.log(jsonData)
   jsonData.results.map(searchResultItem => {
-    let newSearchResultName = document.createElement('li')
+    let newSearchResultName = document.createElement('h2')
     newSearchResultName.innerText = searchResultItem.name
+    debugger;
     let newSearchResultImage = document.createElement('img')
     newSearchResultImage.classList.add('photo')
     newSearchResultImage.src = searchResultItem.picture
-    searchResults.appendChild(newSearchResultName)
-    searchResults.appendChild(newSearchResultImage)
+    movieCard.appendChild(newSearchResultName)
+    movieCard.appendChild(newSearchResultImage)
     searchResultItem.locations.map(searchResultLocation => {
       let newSearchLink= document.createElement('a')
       newSearchLink.href = searchResultLocation.url
@@ -41,7 +42,7 @@ let renderSearchResults = (jsonData) => {
       let newSearchIcon = document.createElement('img')
       newSearchIcon.src = searchResultLocation.icon
     newSearchLink.appendChild(newSearchIcon)
-    searchResults.appendChild(newSearchLink)
+    movieCard.appendChild(newSearchLink)
 
     })
    
@@ -50,7 +51,7 @@ let renderSearchResults = (jsonData) => {
   }
 
 let clearSearchResults = () =>{
-searchResults.innerHTML = "";
+movieCard.innerHTML = "";
 }
 
 
