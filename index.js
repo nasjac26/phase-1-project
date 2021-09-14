@@ -31,3 +31,6 @@ let amendSearch = (event) => {
 
 searchForm.addEventListener('submit', amendSearch)
 
+let tester = () => {
+  console.log("this is a test")
+}
