@@ -30,13 +30,13 @@ let renderSearchResults = (jsonData) => {
   jsonData.results.map(searchResultItem => {
     let newMovieCard = document.createElement('div')
     // newMovieCard.id = `${searchResultItem.name}`
-    newMovieCard.className = 'card, float-child'
+    newMovieCard.className = 'card, row, float-child'
     
     
     
     let newSearchResultName = document.createElement('h5')
     newSearchResultName.innerText = searchResultItem.name
-    newSearchResultName.className = 'card-title'
+    newSearchResultName.className = 'title' //took out card-title class
     
     let newSearchResultImage = document.createElement('img')
     newSearchResultImage.className = 'card-img-top'
@@ -45,13 +45,14 @@ let renderSearchResults = (jsonData) => {
 
     let newMovieCardBody = document.createElement('div')
     // newMovieCardBody.id = `movie-${searchResultItem.name}`
-    newMovieCardBody.className = 'card-body'
+    newMovieCardBody.className = 'card-body, test-card-body'
 
     
-
-    newMovieCard.appendChild(newSearchResultImage) //this appends image to card
-    newMovieCard.appendChild(newMovieCardBody)
     newMovieCardBody.appendChild(newSearchResultName) //this appends title
+
+    newMovieCardBody.appendChild(newSearchResultImage) //this appends image to card
+    newMovieCard.appendChild(newMovieCardBody)
+
     searchResultItem.locations.map(searchResultLocation => {
       let newSearchLink= document.createElement('a')
       newSearchLink.href = searchResultLocation.url
@@ -60,6 +61,7 @@ let renderSearchResults = (jsonData) => {
       }
       let newSearchIcon = document.createElement('img')
       newSearchIcon.src = searchResultLocation.icon
+      newSearchIcon.className = 'icon-class' //ADDED CLASS TO ICON FOR PADDING
     newSearchLink.appendChild(newSearchIcon)
     newMovieCardBody.appendChild(newSearchLink)
     })
