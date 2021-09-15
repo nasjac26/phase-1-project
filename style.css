@@ -23,16 +23,42 @@
 
 
 #movie-container {
-
+    
 }
 
 
 .movie-card {
-    width: 18rem;
-    /* margin: auto; */
+  
+    /* margin: auto;  // This is wonky 
     display: grid;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(3, auto); */
+    display: flex;
+    justify-content: center;
+    flex-direction:row;
+    flex-wrap: wrap;
+    /* flex-flow: row wrap; */
+    text-align: center;
+    
+}
 
+.test-card-body {
+    justify-content: center;
+    text-align: center;
+}
+
+.title {
+    overflow-wrap: break-word;    
+    width: 250px;
+    text-align: center;
+    justify-content: center
+}
+
+.icon-class {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    /* flex-direction:row;
+    flex-flow: row wrap; */
 }
 
 body {
@@ -50,12 +76,13 @@ body {
 .float-child {
     border: solid;
     border-color: #ffcb05;
-    padding: 50px;
+    padding: 30px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
     margin: 30px;
     float: center;
     text-align: center;
+    /* width: 378px; */
 
 }  
 
