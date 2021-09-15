@@ -5,6 +5,9 @@ const searchForm = document.getElementById('search-form')
 const searchBox = document.getElementById('search')
 const movieCard = document.getElementById('movie-card')
 const movieContainer = document.getElementById('movie-container')
+const movieTitle = document.getElementById('card-title')
+const iconList = document.getElementById('icon-list')
+
 
 let fetchStreamApi = (search) => {
   return fetch(`https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=`+search, {
@@ -25,14 +28,30 @@ let renderSearchResults = (jsonData) => {
   clearSearchResults()
   console.log(jsonData)
   jsonData.results.map(searchResultItem => {
-    let newSearchResultName = document.createElement('h2')
+    let newMovieCard = document.createElement('div')
+    // newMovieCard.id = `${searchResultItem.name}`
+    newMovieCard.className = 'card, float-child'
+    
+    
+    
+    let newSearchResultName = document.createElement('h5')
     newSearchResultName.innerText = searchResultItem.name
-    debugger;
+    newSearchResultName.className = 'card-title'
+    
     let newSearchResultImage = document.createElement('img')
-    newSearchResultImage.classList.add('photo')
+    newSearchResultImage.className = 'card-img-top'
+    newSearchResultImage.className = 'photo'
     newSearchResultImage.src = searchResultItem.picture
-    movieCard.appendChild(newSearchResultName)
-    movieCard.appendChild(newSearchResultImage)
+
+    let newMovieCardBody = document.createElement('div')
+    // newMovieCardBody.id = `movie-${searchResultItem.name}`
+    newMovieCardBody.className = 'card-body'
+
+    
+
+    newMovieCard.appendChild(newSearchResultImage) //this appends image to card
+    newMovieCard.appendChild(newMovieCardBody)
+    newMovieCardBody.appendChild(newSearchResultName) //this appends title
     searchResultItem.locations.map(searchResultLocation => {
       let newSearchLink= document.createElement('a')
       newSearchLink.href = searchResultLocation.url
@@ -42,16 +61,17 @@ let renderSearchResults = (jsonData) => {
       let newSearchIcon = document.createElement('img')
       newSearchIcon.src = searchResultLocation.icon
     newSearchLink.appendChild(newSearchIcon)
-    movieCard.appendChild(newSearchLink)
-
+    newMovieCardBody.appendChild(newSearchLink)
     })
-   
+    
+    movieContainer.appendChild(newMovieCard)
+
 
   })
   }
 
 let clearSearchResults = () =>{
-movieCard.innerHTML = "";
+  movieContainer.innerText = "";
 }
 
 
