@@ -7,6 +7,7 @@ const movieCard = document.getElementById('movie-card')
 const movieContainer = document.getElementById('movie-container')
 const movieTitle = document.getElementById('card-title')
 const iconList = document.getElementById('icon-list')
+const magnify = document.getElementsByClassName('search-input')
 
 
 let fetchStreamApi = (search) => {
@@ -85,6 +86,10 @@ let amendSearch = (event) => {
   }
 
 
+
 searchForm.addEventListener('submit', amendSearch)
+magnify.addEventListener('submit', amendSearch)
+
 }
+
 document.addEventListener('DOMContentLoaded', init())
