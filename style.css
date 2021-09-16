@@ -1,12 +1,12 @@
 .search-form{
     /* padding-top: 200px; */
-    
-    
+        
 }
 
 #main-header {
     height: 120px;
     align-content: center;
+   
 }
 
 .search-input {
@@ -34,8 +34,8 @@ input.search-input {
 }
 
 .photo {
-    max-width: 230px;
-    max-height: 230px;
+    max-width: 280px;
+    max-height: 280px;
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -45,6 +45,7 @@ input.search-input {
     /* margin: auto;  // This is wonky 
     display: grid;
     grid-template-columns: repeat(3, auto); */
+    padding-top: 150px;
     display: flex;
     justify-content: center;
     flex-direction:row;
@@ -54,7 +55,7 @@ input.search-input {
     
 }
 
-.test-card-body {
+.movie-card-body {
     justify-content: center;
     text-align: center;
 }
@@ -62,19 +63,22 @@ input.search-input {
 .title {
     font-weight: bold;
     text-decoration: underline;
-    padding-top: 20px;
+    padding-top: 30px;
+    padding-left: 22px;
     overflow-wrap: break-word;    
-    width: 230px;
+    width: 320px;
     text-align: center;
     justify-content: center
 }
 
 .icon-class {
-    padding-top: 10px;
+    /* padding-top: 5px; */
+    
+    padding-bottom: 15px;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+  
 }
 
 body {
@@ -106,6 +110,8 @@ body {
     margin: 30px;
     float: center;
     text-align: center;
+    width: 400px;
+
     
     /* width: 378px; */
 

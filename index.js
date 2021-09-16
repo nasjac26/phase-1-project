@@ -2,11 +2,11 @@ let init = () =>
 
 {
 const searchForm = document.getElementById('search-form')
-const searchBox = document.getElementById('search')
-const movieCard = document.getElementById('movie-card')
+// const searchBox = document.getElementById('search')
+// const movieCard = document.getElementById('movie-card')
 const movieContainer = document.getElementById('movie-container')
-const movieTitle = document.getElementById('card-title')
-const iconList = document.getElementById('icon-list')
+// const movieTitle = document.getElementById('card-title')
+// const iconList = document.getElementById('icon-list')
 const magnify = document.getElementsByClassName('search-input')
 
 
@@ -27,54 +27,51 @@ let fetchStreamApi = (search) => {
 
 let renderSearchResults = (jsonData) => {
   clearSearchResults()
-  console.log(jsonData)
+  // console.log(jsonData)
   jsonData.results.map(searchResultItem => {
     let newMovieCard = document.createElement('div')
-    // newMovieCard.id = `${searchResultItem.name}`
     newMovieCard.className = 'card, float-child'
     
-    
-
     let newSearchResultName = document.createElement('h5')
     newSearchResultName.innerText = searchResultItem.name
-    newSearchResultName.className = 'title' //took out card-title class
+    newSearchResultName.className = 'title' // need to append to newMovieCardBody
     
     let newSearchResultImage = document.createElement('img')
-    newSearchResultImage.className = 'card-img-top'
     newSearchResultImage.className = 'photo'
       if (!searchResultItem.picture) {
-        newSearchResultImage.src = "favicon.png"
+        newSearchResultImage.src = "placeholder.png"
       } else {
-        newSearchResultImage.src = searchResultItem.picture
+        newSearchResultImage.src = searchResultItem.picture // need to append to newMovieCardBody
       }
 
     
 
-    let newMovieCardBody = document.createElement('div')
-    // newMovieCardBody.id = `movie-${searchResultItem.name}`
-    newMovieCardBody.className = 'card-body, test-card-body'
+    // let newMovieCardBody = document.createElement('div')
+    // newMovieCardBody.className = 'movie-card-body'
 
-    
-    newMovieCardBody.appendChild(newSearchResultName) //this appends title
-
-    newMovieCardBody.appendChild(newSearchResultImage) //this appends image to card
-    newMovieCard.appendChild(newMovieCardBody)
-    
     let lineBreak = document.createElement('div')
     lineBreak.innerText = '_________________________________'
-    newMovieCardBody.appendChild(lineBreak)
+    // newMovieCardBody.appendChild(lineBreak)
+    
+    // newMovieCardBody.appendChild(newSearchResultName) //this appends title
+
+    newMovieCard.append(newSearchResultName, newSearchResultImage, lineBreak) //this appends image to card
+    // newMovieCard.appendChild(newMovieCardBody)
+    
+   
     
     searchResultItem.locations.map(searchResultLocation => {
       let newSearchLink= document.createElement('a')
       newSearchLink.href = searchResultLocation.url
-      newSearchLink.onclick = function externalAlert () {
+        newSearchLink.onclick = function externalAlert () {
+        newSearchLink.target = "_new"
         return confirm("You are being sent to an external website")
-      }
+        }
       let newSearchIcon = document.createElement('img')
       newSearchIcon.src = searchResultLocation.icon
       newSearchIcon.className = 'icon-class' //ADDED CLASS TO ICON FOR PADDING
       newSearchLink.appendChild(newSearchIcon)
-      newMovieCardBody.appendChild(newSearchLink)
+      newMovieCard.appendChild(newSearchLink)
     })
     
     movieContainer.appendChild(newMovieCard)
@@ -98,7 +95,6 @@ let amendSearch = (event) => {
 
 
 searchForm.addEventListener('submit', amendSearch)
-magnify.addEventListener('submit', amendSearch)
 
 }
 
