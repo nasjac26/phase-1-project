@@ -74,3 +74,5 @@ let init = () => {
 }
 
 document.addEventListener('DOMContentLoaded', init())
+
+console.log("This was built by Jacob Nasrallah (git:nasjac26), Jesse Nelson (git:WaffleDino), Connor Hollins (git:Alumitti)") 
