@@ -31,10 +31,10 @@ let renderSearchResults = (jsonData) => {
   jsonData.results.map(searchResultItem => {
     let newMovieCard = document.createElement('div')
     // newMovieCard.id = `${searchResultItem.name}`
-    newMovieCard.className = 'card, row, float-child'
+    newMovieCard.className = 'card, float-child'
     
     
-    
+
     let newSearchResultName = document.createElement('h5')
     newSearchResultName.innerText = searchResultItem.name
     newSearchResultName.className = 'title' //took out card-title class
