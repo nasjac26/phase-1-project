@@ -42,7 +42,13 @@ let renderSearchResults = (jsonData) => {
     let newSearchResultImage = document.createElement('img')
     newSearchResultImage.className = 'card-img-top'
     newSearchResultImage.className = 'photo'
-    newSearchResultImage.src = searchResultItem.picture
+      if (!searchResultItem.picture) {
+        newSearchResultImage.src = "favicon.png"
+      } else {
+        newSearchResultImage.src = searchResultItem.picture
+      }
+
+    
 
     let newMovieCardBody = document.createElement('div')
     // newMovieCardBody.id = `movie-${searchResultItem.name}`
@@ -53,7 +59,11 @@ let renderSearchResults = (jsonData) => {
 
     newMovieCardBody.appendChild(newSearchResultImage) //this appends image to card
     newMovieCard.appendChild(newMovieCardBody)
-
+    
+    let lineBreak = document.createElement('div')
+    lineBreak.innerText = '_________________________________'
+    newMovieCardBody.appendChild(lineBreak)
+    
     searchResultItem.locations.map(searchResultLocation => {
       let newSearchLink= document.createElement('a')
       newSearchLink.href = searchResultLocation.url
@@ -63,8 +73,8 @@ let renderSearchResults = (jsonData) => {
       let newSearchIcon = document.createElement('img')
       newSearchIcon.src = searchResultLocation.icon
       newSearchIcon.className = 'icon-class' //ADDED CLASS TO ICON FOR PADDING
-    newSearchLink.appendChild(newSearchIcon)
-    newMovieCardBody.appendChild(newSearchLink)
+      newSearchLink.appendChild(newSearchIcon)
+      newMovieCardBody.appendChild(newSearchLink)
     })
     
     movieContainer.appendChild(newMovieCard)
