@@ -1,6 +1,12 @@
 .search-form{
-    padding-top: 200px;
+    /* padding-top: 200px; */
     
+    
+}
+
+#main-header {
+    height: 120px;
+    align-content: center;
 }
 
 .search-input {
@@ -28,11 +34,9 @@ input.search-input {
 }
 
 .photo {
-    max-width: 280px;
-    max-height: 280px;
+    max-width: 230px;
+    max-height: 230px;
 }
-
-
 
 .movie-card {
   
@@ -54,6 +58,8 @@ input.search-input {
 }
 
 .title {
+
+    padding-top: 20px;
     overflow-wrap: break-word;    
     width: 250px;
     text-align: center;
@@ -84,15 +90,20 @@ body {
 } */
 
 .float-child {
-    border: solid;
-    border-color: #ffcb05;
+    /* border: 50px solid transparent;
+    padding: 15px;
+    border-image: url(./border.png) 70 space;
+    border-image-repeat: repeat; */
+    background-image: url(./poster.png);
+    background-size: 100% 100%;
+    background-color: lightgrey;
     padding: 30px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
     margin: 30px;
     float: center;
     text-align: center;
+    
     /* width: 378px; */
 
 }  
-
